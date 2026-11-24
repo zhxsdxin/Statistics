@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>风格候选预览 · 統計検定2級</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans","Microsoft YaHei",sans-serif;line-height:1.7;background:#e9e6de;padding:24px 14px 60px}
+.page-title{text-align:center;font-size:15px;color:#6b665c;margin-bottom:6px}
+.page-sub{text-align:center;font-size:12.5px;color:#99937f;margin-bottom:24px}
+.demo{max-width:620px;margin:0 auto 34px;border-radius:6px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+.demo-label{padding:7px 14px;font-size:12.5px;font-weight:700;letter-spacing:1px;background:#2f2b24;color:#f4f0e4}
+.demo-label span{font-weight:400;opacity:.7;margin-left:10px}
+
+/* B 极简白 */
+.theme-b{--bg:#ffffff;--card:#ffffff;--ink:#1a1a1a;--muted:#8a8a8a;--brand:#1d4ed8;--brand-soft:#eef2ff;--ok:#15803d;--ok-soft:#f0fdf4;--line:#e5e5e5}
+.theme-b .body{background:var(--bg)}
+.theme-b .hero{padding:22px 20px;border-bottom:1px solid var(--line)}
+.theme-b .hero h1{font-size:19px;color:var(--ink)}
+.theme-b .hero p{font-size:12.5px;color:var(--muted);margin-top:3px}
+.theme-b .card{margin:18px 20px;border:1px solid var(--line);border-radius:6px;padding:18px;background:var(--card)}
+.theme-b h2{font-size:15px;color:var(--ink);margin-bottom:10px}
+.theme-b .opts button{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px 13px;margin-bottom:7px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--ink)}
+.theme-b .opts button.right{border-color:var(--ok);background:var(--ok-soft)}
+.theme-b .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.theme-b .tbl th{border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);padding:6px 8px;text-align:left;color:var(--ink)}
+.theme-b .tbl td{border-bottom:1px solid var(--line);padding:6px 8px;color:var(--ink)}
+.theme-b .btn{border:0;border-radius:4px;padding:9px 20px;font-size:13.5px;font-weight:700;background:var(--brand);color:#fff;cursor:pointer}
+.theme-b .btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+
+/* C 奶油圆润 */
+.theme-c{--bg:#fdf8f0;--card:#ffffff;--ink:#4a3f33;--muted:#a89a88;--brand:#c2704e;--brand-soft:#f9ede3;--ok:#7a9a6d;--ok-soft:#f1f6ec;--line:#efe4d3}
+.theme-c .body{background:var(--bg)}
+.theme-c .hero{padding:24px 20px;background:linear-gradient(135deg,#fbeeda,#f8e8d8);border-bottom:1px solid var(--line)}
+.theme-c .hero h1{font-size:19px;color:var(--ink)}
+.theme-c .hero p{font-size:12.5px;color:var(--muted);margin-top:3px}
+.theme-c .card{margin:18px 20px;border:0;border-radius:18px;padding:18px;background:var(--card);box-shadow:0 4px 14px rgba(160,120,80,.12)}
+.theme-c h2{font-size:15px;color:var(--brand);margin-bottom:10px}
+.theme-c .opts button{display:block;width:100%;text-align:left;background:#fdf8f0;border:1.5px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:7px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--ink)}
+.theme-c .opts button.right{border-color:var(--ok);background:var(--ok-soft)}
+.theme-c .tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;margin-top:8px}
+.theme-c .tbl th{background:var(--brand-soft);color:var(--brand);padding:6px 8px;text-align:left}
+.theme-c .tbl th:first-child{border-radius:8px 0 0 8px}.theme-c .tbl th:last-child{border-radius:0 8px 8px 0}
+.theme-c .tbl td{border-bottom:1px solid var(--line);padding:6px 8px;color:var(--ink)}
+.theme-c .btn{border:0;border-radius:999px;padding:9px 22px;font-size:13.5px;font-weight:700;background:var(--brand);color:#fff;cursor:pointer}
+.theme-c .btn.ghost{background:#fff;color:var(--brand);border:1.5px solid var(--brand)}
+
+/* D 夜读深色 */
+.theme-d{--bg:#26241f;--card:#2e2b25;--ink:#e8e2d4;--muted:#9a9280;--brand:#d9a441;--brand-soft:#3a352b;--ok:#8fb573;--ok-soft:#2f3a2a;--line:#454035}
+.theme-d .body{background:var(--bg)}
+.theme-d .hero{padding:22px 20px;border-bottom:1px solid var(--line)}
+.theme-d .hero h1{font-size:19px;color:var(--ink)}
+.theme-d .hero p{font-size:12.5px;color:var(--muted);margin-top:3px}
+.theme-d .card{margin:18px 20px;border:1px solid var(--line);border-radius:10px;padding:18px;background:var(--card)}
+.theme-d h2{font-size:15px;color:var(--brand);margin-bottom:10px}
+.theme-d .opts button{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 13px;margin-bottom:7px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--ink)}
+.theme-d .opts button.right{border-color:var(--ok);background:var(--ok-soft)}
+.theme-d .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.theme-d .tbl th{border-bottom:1.5px solid var(--muted);padding:6px 8px;text-align:left;color:var(--brand)}
+.theme-d .tbl td{border-bottom:1px solid var(--line);padding:6px 8px;color:var(--ink)}
+.theme-d .btn{border:0;border-radius:8px;padding:9px 20px;font-size:13.5px;font-weight:700;background:var(--brand);color:#26241f;cursor:pointer}
+.theme-d .btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand)}
+
+/* E 青磁淡雅 */
+.theme-e{--bg:#f3f6f3;--card:#fbfcfb;--ink:#33413a;--muted:#8ba093;--brand:#4a7a68;--brand-soft:#e4efe9;--accent:#b3402e;--ok:#4a7a68;--ok-soft:#e4efe9;--line:#dde5df}
+.theme-e .body{background:var(--bg)}
+.theme-e .hero{padding:24px 20px;background:linear-gradient(160deg,#e9f1ec,#f3f6f3);border-bottom:1px solid var(--line)}
+.theme-e .hero h1{font-size:19px;color:var(--ink);letter-spacing:1px}
+.theme-e .hero p{font-size:12.5px;color:var(--muted);margin-top:3px}
+.theme-e .card{margin:18px 20px;border:1px solid var(--line);border-radius:8px;padding:18px;background:var(--card)}
+.theme-e h2{font-size:15px;color:var(--brand);margin-bottom:10px;letter-spacing:.5px}
+.theme-e .opts button{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:10px 13px;margin-bottom:7px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--ink)}
+.theme-e .opts button.right{border-color:var(--ok);background:var(--ok-soft)}
+.theme-e .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.theme-e .tbl th{background:var(--brand-soft);color:var(--brand);padding:6px 8px;text-align:left}
+.theme-e .tbl th,.theme-e .tbl td{border:1px solid var(--line)}
+.theme-e .tbl td{color:var(--ink)}
+.theme-e .btn{border:0;border-radius:6px;padding:9px 20px;font-size:13.5px;font-weight:700;background:var(--brand);color:#fff;cursor:pointer}
+.theme-e .btn.ghost{background:var(--card);color:var(--brand);border:1px solid var(--brand)}
+.theme-e .seal{display:inline-block;border:1.5px solid var(--accent);color:var(--accent);font-size:11px;padding:1px 7px;border-radius:3px;margin-left:8px;vertical-align:2px}
+
+.q-tag{display:inline-block;font-size:11px;padding:1px 9px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font-weight:700;margin-bottom:6px}
+.jp{font-size:13.5px;color:var(--ink)}
+.zh{font-size:13px;color:var(--muted);margin-top:2px}
+.optzh{color:var(--muted);font-size:12.5px}
+.btnrow{margin-top:12px;display:flex;gap:8px}
+</style>
+</head>
+<body>
+<p class="page-title">風格候選預覽</p>
+<p class="page-sub">同一份示例内容 · 4 个候选风格 · 告诉我字母即可整站套用</p>
+<div class="demo theme-B"><div class="demo-label">B · 极简白 · 瑞士冷淡<span>纯白底黑字，一个蓝作强调，细灰线</span></div><div class="body">
+ <div class="hero">
+   <h1>統計検定2級 対策トレーニング</h1>
+   <p>35 题 · 90 分钟 · 60 分合格 · CBT</p>
+ </div>
+ <div class="card">
+   <h2>📄 示例题目</h2>
+   <span class="q-tag">⑤ 概率分布</span>
+   <div class="jp">X は二項分布 B(10, 0.3) に従う。E(X) と V(X) を求めよ。</div>
+   <div class="zh">X 服从二项分布 B(10, 0.3)。求 E(X) 和 V(X)。</div>
+   <div class="opts" style="margin-top:10px">
+     <button>E(X)=3, V(X)=2.1 <span class="optzh">｜期望 3，方差 2.1</span></button>
+     <button class="right">E(X)=3, V(X)=3 <span class="optzh">｜期望 3，方差 3 ✔ 示例演示正确态</span></button>
+     <button>E(X)=0.3, V(X)=0.21 <span class="optzh">｜期望 0.3，方差 0.21</span></button>
+   </div>
+   <table class="tbl">
+     <tr><th>分布</th><th>E(X)</th><th>V(X)</th></tr>
+     <tr><td>B(n,p)</td><td>np</td><td>np(1−p)</td></tr>
+     <tr><td>Pois(λ)</td><td>λ</td><td>λ</td></tr>
+   </table>
+   <div class="btnrow">
+     <button class="btn">开始练习</button>
+     <button class="btn ghost">查看考点</button>
+   </div>
+ </div></div></div><div class="demo theme-C"><div class="demo-label">C · 奶油圆润 · 亲和<span>奶油底暖棕字，陶土色点缀，大圆角软阴影</span></div><div class="body">
+ <div class="hero">
+   <h1>統計検定2級 対策トレーニング</h1>
+   <p>35 题 · 90 分钟 · 60 分合格 · CBT</p>
+ </div>
+ <div class="card">
+   <h2>📄 示例题目</h2>
+   <span class="q-tag">⑤ 概率分布</span>
+   <div class="jp">X は二項分布 B(10, 0.3) に従う。E(X) と V(X) を求めよ。</div>
+   <div class="zh">X 服从二项分布 B(10, 0.3)。求 E(X) 和 V(X)。</div>
+   <div class="opts" style="margin-top:10px">
+     <button>E(X)=3, V(X)=2.1 <span class="optzh">｜期望 3，方差 2.1</span></button>
+     <button class="right">E(X)=3, V(X)=3 <span class="optzh">｜期望 3，方差 3 ✔ 示例演示正确态</span></button>
+     <button>E(X)=0.3, V(X)=0.21 <span class="optzh">｜期望 0.3，方差 0.21</span></button>
+   </div>
+   <table class="tbl">
+     <tr><th>分布</th><th>E(X)</th><th>V(X)</th></tr>
+     <tr><td>B(n,p)</td><td>np</td><td>np(1−p)</td></tr>
+     <tr><td>Pois(λ)</td><td>λ</td><td>λ</td></tr>
+   </table>
+   <div class="btnrow">
+     <button class="btn">开始练习</button>
+     <button class="btn ghost">查看考点</button>
+   </div>
+ </div></div></div><div class="demo theme-D"><div class="demo-label">D · 夜读深色 · 暖炭<span>暖炭底奶油字，琥珀金强调，深夜不刺眼</span></div><div class="body">
+ <div class="hero">
+   <h1>統計検定2級 対策トレーニング</h1>
+   <p>35 题 · 90 分钟 · 60 分合格 · CBT</p>
+ </div>
+ <div class="card">
+   <h2>📄 示例题目</h2>
+   <span class="q-tag">⑤ 概率分布</span>
+   <div class="jp">X は二項分布 B(10, 0.3) に従う。E(X) と V(X) を求めよ。</div>
+   <div class="zh">X 服从二项分布 B(10, 0.3)。求 E(X) 和 V(X)。</div>
+   <div class="opts" style="margin-top:10px">
+     <button>E(X)=3, V(X)=2.1 <span class="optzh">｜期望 3，方差 2.1</span></button>
+     <button class="right">E(X)=3, V(X)=3 <span class="optzh">｜期望 3，方差 3 ✔ 示例演示正确态</span></button>
+     <button>E(X)=0.3, V(X)=0.21 <span class="optzh">｜期望 0.3，方差 0.21</span></button>
+   </div>
+   <table class="tbl">
+     <tr><th>分布</th><th>E(X)</th><th>V(X)</th></tr>
+     <tr><td>B(n,p)</td><td>np</td><td>np(1−p)</td></tr>
+     <tr><td>Pois(λ)</td><td>λ</td><td>λ</td></tr>
+   </table>
+   <div class="btnrow">
+     <button class="btn">开始练习</button>
+     <button class="btn ghost">查看考点</button>
+   </div>
+ </div></div></div><div class="demo theme-E"><div class="demo-label">E · 青磁淡雅 · 和风轻<span>淡青磁底灰绿主色，朱红小印章点缀</span></div><div class="body">
+ <div class="hero">
+   <h1>統計検定2級 対策トレーニング<span class="seal">統検</span></h1>
+   <p>35 题 · 90 分钟 · 60 分合格 · CBT</p>
+ </div>
+ <div class="card">
+   <h2>📄 示例题目</h2>
+   <span class="q-tag">⑤ 概率分布</span>
+   <div class="jp">X は二項分布 B(10, 0.3) に従う。E(X) と V(X) を求めよ。</div>
+   <div class="zh">X 服从二项分布 B(10, 0.3)。求 E(X) 和 V(X)。</div>
+   <div class="opts" style="margin-top:10px">
+     <button>E(X)=3, V(X)=2.1 <span class="optzh">｜期望 3，方差 2.1</span></button>
+     <button class="right">E(X)=3, V(X)=3 <span class="optzh">｜期望 3，方差 3 ✔ 示例演示正确态</span></button>
+     <button>E(X)=0.3, V(X)=0.21 <span class="optzh">｜期望 0.3，方差 0.21</span></button>
+   </div>
+   <table class="tbl">
+     <tr><th>分布</th><th>E(X)</th><th>V(X)</th></tr>
+     <tr><td>B(n,p)</td><td>np</td><td>np(1−p)</td></tr>
+     <tr><td>Pois(λ)</td><td>λ</td><td>λ</td></tr>
+   </table>
+   <div class="btnrow">
+     <button class="btn">开始练习</button>
+     <button class="btn ghost">查看考点</button>
+   </div>
+ </div></div></div>
+</body>
+</html>
